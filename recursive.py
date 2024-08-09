@@ -22,15 +22,14 @@ def deep_sum(lst):
     return shallow_sum
 
 
-def deep_sum2(lst, n):
-    if n == 0:
+def deep_sum2(lst):
+    if len(lst) == 0:
         return 0
     last = lst.pop()
     if isinstance(last, list):
-        last = deep_sum2(last,
-                         len(last))  # променям референцията от list към int; не знам как се решава, ако това не е позволено
+        last = deep_sum2(last)  # променям референцията от list към int; не знам как се решава, ако това не е позволено
 
-    return last + deep_sum2(lst, len(lst))
+    return last + deep_sum2(lst)
 
 
 def is_closed(seq, n):
@@ -67,9 +66,9 @@ if __name__ == '__main__':
 
     print('###################################################')
 
-    print(deep_sum2(ugly, len(ugly)))  # 28
-    print(deep_sum2(uglier, len(uglier)))  # 69
-    print(deep_sum2(ugliest, len(ugliest)))  # 69
+    print(deep_sum2(ugly))  # 28
+    print(deep_sum2(uglier))  # 69
+    print(deep_sum2(ugliest))  # 69
 
     print('###################################################')
 
